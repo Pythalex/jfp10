@@ -1,13 +1,19 @@
 import converter
 
-def _set(tab, instruction):
-    instruction = instruction.split(" ")
-    tab[int(instruction[1])][int(instruction[0])] = int(instruction[2])
+def clic(tab, inst):
+    inst = inst.split(" ")
+    if has_same_value_neighbour(tab, int(inst[0]), int(inst[1])):
+        tab[int(inst[1])][int(inst[0])] += 1
+    return tab
+
+def _set(tab, inst):
+    inst = inst.split(" ")
+    tab[int(inst[1])][int(inst[0])] = int(inst[2])
     return converter.array_to_str(tab)
 
-def _get(tab, instruction):
-    instruction = instruction.split(" ")
-    return tab[int(instruction[1])][int(instruction[0])]
+def _get(tab, inst):
+    inst = inst.split(" ")
+    return tab[int(inst[1])][int(inst[0])]
 
 
 
