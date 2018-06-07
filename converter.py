@@ -9,7 +9,7 @@ def str_array_to_int_array(str_grid):
 
     for i in range(len(str_grid)):
         for j in range(len(str_grid[i])):
-            array2d[i].append(int(str_grid[i][j]))
+            array2d[i].append(-1 if str_grid[i][j] == '.' else int(str_grid[i][j]))
 
     return array2d
 
@@ -25,7 +25,7 @@ def str_to_array(str_grid):
 
     for i in range(len(splitted)):
         for j in range(len(splitted[i])):
-            array2d[i].append(int(splitted[i][j]))
+            array2d[i].append(-1 if splitted[i][j] == '.' else int(splitted[i][j]))
 
     return array2d
 

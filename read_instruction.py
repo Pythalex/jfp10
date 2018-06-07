@@ -1,5 +1,25 @@
 import converter
 
+def has_same_value_neighbour(tab, x, y):
+
+    neighbours = []
+
+    xleft = (x == 0)
+    xright = (x == len(tab[0]) - 1)
+    yup = (y == 0)
+    ybottom = (y == len(tab) - 1)
+
+    if not xleft:
+        neighbours.append(tab[x - 1][y])
+    if not yup:
+        neighbours.append(tab[x][y - 1])
+    if not xright:
+        neighbours.append(tab[x + 1][y])
+    if y not ybottom:
+        neighbours.append(tab[x][y + 1]
+
+    return tab[x][y] in neighbours
+
 def clic(tab, inst):
     inst = inst.split(" ")
     if has_same_value_neighbour(tab, int(inst[0]), int(inst[1])):
@@ -14,8 +34,6 @@ def _set(tab, inst):
 def _get(tab, inst):
     inst = inst.split(" ")
     return tab[int(inst[1])][int(inst[0])]
-
-
 
 def read_instruction(tab, instruction):
     # clic 0 0
