@@ -1,3 +1,18 @@
+def str_array_to_int_array(str_grid):
+    """
+    Convertit le tableau string en array 2d
+    """
+
+    # suppose la forme [2535,4564,4456,4758]
+
+    array2d = [[] for i in range(len(str_grid))]
+
+    for i in range(len(str_grid)):
+        for j in range(len(str_grid[i])):
+            array2d[i].append(int(str_grid[i][j]))
+
+    return array2d
+
 def str_to_array(str_grid):
     """
     Convertit le tableau string en array 2d

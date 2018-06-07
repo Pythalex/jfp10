@@ -17,7 +17,12 @@ def read_instruction(tab, instruction):
     # set 0 0 0
     instruction = instruction.lower()
 
-    if instruction[0] == "c":
+    if instruction[0:2] == "se":
+        return _set(tab, instruction[4:])
+
+    elif instruction[0] == "g":
+        return _get(tab, instruction[4:])
+    elif instruction[0] == "c":
         return clic(tab, instruction[5:])
 
     elif instruction[0] == "r":
@@ -25,13 +30,6 @@ def read_instruction(tab, instruction):
 
     elif instruction[0:2] == "sc":
         return score(tab, instruction[6:])
-
-    elif instruction[0:2] == "se":
-        return _set(tab, instruction[4:])
-
-    elif instruction[0] == "g":
-        return _get(tab, instruction[4:])
-    
     else:
         return -1
 
