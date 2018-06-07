@@ -14,18 +14,26 @@ def del_voisin(tab, x, y, voisin):
 def clic(tab, inst):
     # commandes
     inst = inst.split(" ")
-    save = tab[int(inst[1])][int(inst[0])] + 1
+    save = tab[int(inst[1])][int(inst[0])]
 
-    # Position de départ
-    t = [[int(inst[0]), int(inst[1])]]
+    # Si la case est vide on ne fait rien
+    if save != '.':
 
-    del_voisin(tab, int(inst[0]), int(inst[1]), t)
+        # Position de départ
+        voisins = [[int(inst[0]), int(inst[1])]]
 
-    for elem in t:
-        tab[elem[1]][elem[0]] = "."
-    tab[int(inst[1])][int(inst[0])] = save
-    
-    nb.apply_gravity(tab)
+        del_voisin(tab, int(inst[0]), int(inst[1]), voisins)
+
+        for voisin in voisins:
+            tab[voisin[1]][voisin[0]] = "."
+        
+        # Si il y a un voisin on incrémente sinon on rétablit la valeur initiale
+        if len(voisins) > 1:
+            tab[int(inst[1])][int(inst[0])] = save + 1
+        else:
+            tab[int(inst[1])][int(inst[0])] = save
+        
+        nb.apply_gravity(tab)
 
     return tab
 
