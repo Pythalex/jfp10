@@ -3,7 +3,23 @@ import read_instruction as read
 
 def main():
 
-    command = input()
+    inline = "a"
+    command = ""
+
+    first = True
+
+    try:
+        while True:
+            if not first:
+                command += "\n"
+            else:
+                first = False
+            inline = input()
+            command += inline
+    except:
+        pass
+    command = command[:-1]
+    
     #command = "41212\n\
 #11313\n\
 #22113\n\

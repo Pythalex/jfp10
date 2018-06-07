@@ -1,7 +1,9 @@
+import converter
+
 def _set(tab, instruction):
     instruction = instruction.split(" ")
     tab[int(instruction[1])][int(instruction[0])] = int(instruction[2])
-    return tab
+    return converter.array_to_str(tab)
 
 def _get(tab, instruction):
     instruction = instruction.split(" ")
