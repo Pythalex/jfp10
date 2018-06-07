@@ -2,6 +2,6 @@
 #include <stdlib.h> 
 
 int main(){
-    system("python3 exo3/main-3.py");
+    system("python3 exo3/main.py");
     return 0;
 }

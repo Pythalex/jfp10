@@ -1,1 +1,1 @@
-g++ run_script.3.cpp -o remplacercase.exe
+g++ run_script.2.cpp -o remplacercase.exe
