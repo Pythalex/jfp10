@@ -1,1 +1,1 @@
-g++ run_script.cpp -o afficherpos.exe
+g++ run_script.1.cpp -o afficherpos.exe

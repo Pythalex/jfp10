@@ -1,35 +1,8 @@
-import converter
-
-def has_same_value_neighbour(tab, x, y):
-
-    neighbours = []
-    val = tab[y][x]
-
-    xleft = (x == 0)
-    xright = (x == len(tab) - 1)
-    yup = (y == 0)
-    ybottom = (y == len(tab[0]) - 1)
-
-    if not xleft:
-        if tab[y][x - 1] == val:
-            neighbours.append([x, y])
-
-    if not yup:
-        if tab[y - 1][x]] == val:
-            neighbours.append([x, y])
-
-    if not xright:
-        if tab[y][x + 1] == val:
-            neighbours.append([x, y])
-
-    if not ybottom:
-        if tab[y + 1][x] == val:
-            neighbours.append([x, y])
-
-    return neighbours
+import converter as cnv
+import neighbour as nb
 
 def del_voisin(tab, x, y, voisin):
-    all_v = has_same_value_neighbour(tab, x, y)
+    all_v = nb.has_same_value_neighbour(tab, x, y)
     for elem in all_v:
         if elem not in voisin:
             voisin.append(elem)
@@ -63,12 +36,12 @@ def read_instruction(tab, instruction):
     instruction = instruction.lower()
 
     if instruction[0:2] == "se":
-        return converter.array_to_str(_set(tab, instruction[4:]))
+        return cnv.array_to_str(_set(tab, instruction[4:]))
 
     elif instruction[0] == "g":
         return _get(tab, instruction[4:])
     elif instruction[0] == "c":
-        return converter.array_to_str(clic(tab, instruction[5:]))
+        return cnv.array_to_str(clic(tab, instruction[5:]))
 
     elif instruction[0] == "r":
         return reserve(tab, instruction[8:])
