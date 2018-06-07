@@ -1,0 +1,1 @@
+g++ run_script.cpp -o remplacercase.exe

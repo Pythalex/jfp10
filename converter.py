@@ -38,7 +38,7 @@ def array_to_str(grid_array):
 
     array = []
     for i in range(len(grid_array)):
-        array.append("".join([str(grid_array[i][j]) for j in range(len(grid_array[i]))]))
+        array.append("".join([('.' if grid_array[i][j] == -1 else str(grid_array[i][j])) for j in range(len(grid_array[i]))]))
 
     stringified = "\n".join(array)
 

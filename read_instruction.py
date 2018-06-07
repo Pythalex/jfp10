@@ -5,18 +5,18 @@ def has_same_value_neighbour(tab, x, y):
     neighbours = []
 
     xleft = (x == 0)
-    xright = (x == len(tab[0]) - 1)
+    xright = (x == len(tab) - 1)
     yup = (y == 0)
-    ybottom = (y == len(tab) - 1)
+    ybottom = (y == len(tab[0]) - 1)
 
     if not xleft:
-        neighbours.append(tab[x - 1][y])
+        neighbours.append(tab[y][x - 1])
     if not yup:
-        neighbours.append(tab[x][y - 1])
+        neighbours.append(tab[y - 1][x])
     if not xright:
-        neighbours.append(tab[x + 1][y])
-    if y not ybottom:
-        neighbours.append(tab[x][y + 1]
+        neighbours.append(tab[y][x + 1])
+    if not ybottom:
+        neighbours.append(tab[y + 1][x])
 
     return tab[x][y] in neighbours
 
@@ -29,7 +29,7 @@ def clic(tab, inst):
 def _set(tab, inst):
     inst = inst.split(" ")
     tab[int(inst[1])][int(inst[0])] = int(inst[2])
-    return converter.array_to_str(tab)
+    return tab
 
 def _get(tab, inst):
     inst = inst.split(" ")
@@ -44,12 +44,12 @@ def read_instruction(tab, instruction):
     instruction = instruction.lower()
 
     if instruction[0:2] == "se":
-        return _set(tab, instruction[4:])
+        return converter.array_to_str(_set(tab, instruction[4:]))
 
     elif instruction[0] == "g":
         return _get(tab, instruction[4:])
     elif instruction[0] == "c":
-        return clic(tab, instruction[5:])
+        return converter.array_to_str(clic(tab, instruction[5:]))
 
     elif instruction[0] == "r":
         return reserve(tab, instruction[8:])
